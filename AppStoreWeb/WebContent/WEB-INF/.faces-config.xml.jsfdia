@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROCESS model-entity="JSFProcess">
+ <PROCESS-ITEM NAME="rules:#home.jsp" PATH="/home.jsp"
+  SHAPE="240,33,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#home.jsp:0" NAME="item" PATH="/home.jsp" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="newCustomer::#newCustomer.jsp" NAME="output"
+    PATH="/newCustomer.jsp" TARGET="rules:#newCustomer.jsp"
+    TITLE="newCustomer" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="newOrder::#newOrder.jsp" NAME="output1"
+    PATH="/newOrder.jsp" TARGET="rules:#newOrder.jsp" TITLE="newOrder" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:" SHAPE="32,17,0,0" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules::0" NAME="item" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="home::#home.jsp" NAME="output"
+    PATH="/home.jsp" TARGET="rules:#home.jsp" TITLE="home" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#newCustomer.jsp" PATH="/newCustomer.jsp"
+  SHAPE="464,17,0,0" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#newOrder.jsp" PATH="/newOrder.jsp"
+  SHAPE="464,161,0,0" model-entity="JSFProcessGroup"/>
+</PROCESS>

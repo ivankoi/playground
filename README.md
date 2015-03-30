@@ -1,3 +1,0 @@
-# playground
-
-Par of EnterpriseStore

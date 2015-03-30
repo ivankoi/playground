@@ -1,1 +1,1 @@
-PAr of EnterpriseStore
+Part of EnterpriseStore

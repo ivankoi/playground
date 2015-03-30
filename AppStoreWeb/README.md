@@ -1,1 +1,1 @@
-# AppStoreWeb
+Part of EnterpriseStore

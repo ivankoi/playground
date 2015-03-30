@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="e1e23ce8-ace8-4035-b00c-5f5f5834f0e6" activeEnvironment="Default" name="StoreManager" resourceRoot="" soapui-version="5.1.2" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="470130ed-1821-433e-a08b-0ece664e5f22" wsaVersion="NONE" name="StoreManagerWebEndpointBinding" type="wsdl" bindingName="{http://www.ivankoi.com}StoreManagerWebEndpointBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/AppStoreWeb/storeManagerWebService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/AppStoreWeb/storeManagerWebService?wsdl"><con:part><con:url>http://localhost:8080/AppStoreWeb/storeManagerWebService?wsdl</con:url><con:content><![CDATA[<definitions name="StoreManagerWebService" targetNamespace="http://www.ivankoi.com" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.ivankoi.com" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <types>
+    <xs:schema targetNamespace="http://www.ivankoi.com" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="createCustomer" type="tns:createCustomer"/>
+      <xs:element name="createCustomerResponse" type="tns:createCustomerResponse"/>
+      <xs:element name="findAllCustomers" type="tns:findAllCustomers"/>
+      <xs:element name="findAllCustomersResponse" type="tns:findAllCustomersResponse"/>
+      <xs:element name="findAllItems" type="tns:findAllItems"/>
+      <xs:element name="findAllItemsResponse" type="tns:findAllItemsResponse"/>
+      <xs:element name="findCustomerById" type="tns:findCustomerById"/>
+      <xs:element name="findCustomerByIdResponse" type="tns:findCustomerByIdResponse"/>
+      <xs:element name="findCustomerByName" type="tns:findCustomerByName"/>
+      <xs:element name="findCustomerByNameResponse" type="tns:findCustomerByNameResponse"/>
+      <xs:element name="saveOrder" type="tns:saveOrder"/>
+      <xs:element name="saveOrderResponse" type="tns:saveOrderResponse"/>
+      <xs:complexType name="createCustomer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="customerCountry" type="xs:string"/>
+          <xs:element minOccurs="0" name="customerName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createCustomerResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="saveOrder">
+        <xs:sequence>
+          <xs:element name="customerId" type="xs:int"/>
+          <xs:element name="price" type="xs:int"/>
+          <xs:element name="quantity" type="xs:int"/>
+          <xs:element minOccurs="0" name="product" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="saveOrderResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="findCustomerById">
+        <xs:sequence>
+          <xs:element name="customerId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findCustomerByIdResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="customer" type="tns:customer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="customer">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="country" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="items" nillable="true" type="tns:item"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="item">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="price" type="xs:int"/>
+          <xs:element minOccurs="0" name="product" type="xs:string"/>
+          <xs:element name="quantity" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findAllItems">
+        <xs:sequence>
+          <xs:element name="customerId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findAllItemsResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="itemList" type="tns:item"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findCustomerByName">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="customerName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findCustomerByNameResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="customer" type="tns:customer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findAllCustomers">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="findAllCustomersResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="customerList" type="tns:customer"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="StoreManagerWebEndpoint_saveOrderResponse">
+    <part element="tns:saveOrderResponse" name="saveOrderResponse"/>
+  </message>
+  <message name="StoreManagerWebEndpoint_findAllCustomersResponse">
+    <part element="tns:findAllCustomersResponse" name="findAllCustomersResponse"/>
+  </message>
+  <message name="StoreManagerWebEndpoint_findCustomerByName">
+    <part element="tns:findCustomerByName" name="findCustomerByName"/>
+  </message>
+  <message name="StoreManagerWebEndpoint_findAllItems">
+    <part element="tns:findAllItems" name="findAllItems"/>
+  </message>
+  <message name="StoreManagerWebEndpoint_saveOrder">
+    <part element="tns:saveOrder" name="saveOrder"/>
+  </message>
+  <message name="StoreManagerWebEndpoint_findAllCustomers">
+    <part element="tns:findAllCustomers" name="findAllCustomers"/>
+  </message>
+  <message name="StoreManagerWebEndpoint_findCustomerById">
+    <part element="tns:findCustomerById" name="findCustomerById"/>
+  </message>
+  <message name="StoreManagerWebEndpoint_findCustomerByNameResponse">
+    <part element="tns:findCustomerByNameResponse" name="findCustomerByNameResponse"/>
+  </message>
+  <message name="StoreManagerWebEndpoint_findAllItemsResponse">
+    <part element="tns:findAllItemsResponse" name="findAllItemsResponse"/>
+  </message>
+  <message name="StoreManagerWebEndpoint_findCustomerByIdResponse">
+    <part element="tns:findCustomerByIdResponse" name="findCustomerByIdResponse"/>
+  </message>
+  <message name="StoreManagerWebEndpoint_createCustomerResponse">
+    <part element="tns:createCustomerResponse" name="createCustomerResponse"/>
+  </message>
+  <message name="StoreManagerWebEndpoint_createCustomer">
+    <part element="tns:createCustomer" name="createCustomer"/>
+  </message>
+  <portType name="StoreManagerWebEndpoint">
+    <operation name="createCustomer" parameterOrder="createCustomer">
+      <input message="tns:StoreManagerWebEndpoint_createCustomer"/>
+      <output message="tns:StoreManagerWebEndpoint_createCustomerResponse"/>
+    </operation>
+    <operation name="findAllCustomers" parameterOrder="findAllCustomers">
+      <input message="tns:StoreManagerWebEndpoint_findAllCustomers"/>
+      <output message="tns:StoreManagerWebEndpoint_findAllCustomersResponse"/>
+    </operation>
+    <operation name="findAllItems" parameterOrder="findAllItems">
+      <input message="tns:StoreManagerWebEndpoint_findAllItems"/>
+      <output message="tns:StoreManagerWebEndpoint_findAllItemsResponse"/>
+    </operation>
+    <operation name="findCustomerById" parameterOrder="findCustomerById">
+      <input message="tns:StoreManagerWebEndpoint_findCustomerById"/>
+      <output message="tns:StoreManagerWebEndpoint_findCustomerByIdResponse"/>
+    </operation>
+    <operation name="findCustomerByName" parameterOrder="findCustomerByName">
+      <input message="tns:StoreManagerWebEndpoint_findCustomerByName"/>
+      <output message="tns:StoreManagerWebEndpoint_findCustomerByNameResponse"/>
+    </operation>
+    <operation name="saveOrder" parameterOrder="saveOrder">
+      <input message="tns:StoreManagerWebEndpoint_saveOrder"/>
+      <output message="tns:StoreManagerWebEndpoint_saveOrderResponse"/>
+    </operation>
+  </portType>
+  <binding name="StoreManagerWebEndpointBinding" type="tns:StoreManagerWebEndpoint">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="createCustomer">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="findAllCustomers">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="findAllItems">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="findCustomerById">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="findCustomerByName">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="saveOrder">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="StoreManagerWebService">
+    <port binding="tns:StoreManagerWebEndpointBinding" name="StoreManagerWebEndpointPort">
+      <soap:address location="http://localhost:8080/AppStoreWeb/storeManagerWebService"/>
+    </port>
+  </service>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/AppStoreWeb/storeManagerWebService</con:endpoint></con:endpoints><con:operation id="96271fa1-b10b-4e70-aeb3-248341f23232" isOneWay="false" action="" name="createCustomer" bindingOperationName="createCustomer" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="0cd7df52-6f17-41b6-8f77-4ee9238f62f1" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/AppStoreWeb/storeManagerWebService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ivan="http://www.ivankoi.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ivan:createCustomer>\r
+         <!--Optional:-->\r
+         <customerCountry>Canada</customerCountry>\r
+         <!--Optional:-->\r
+         <customerName>Ivan Ivankovic</customerName>\r
+      </ivan:createCustomer>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.ivankoi.com/StoreManagerWebEndpoint/createCustomerRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="a6efbb56-f343-499a-a446-5120c7f3b16f" isOneWay="false" action="" name="findAllCustomers" bindingOperationName="findAllCustomers" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="517bef14-edf6-46d0-bf6b-d65ad7c0c1ac" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/AppStoreWeb/storeManagerWebService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ivan="http://www.ivankoi.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ivan:findAllCustomers/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.ivankoi.com/StoreManagerWebEndpoint/findAllCustomersRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="8e719589-4f2d-4ddc-90d5-daccde6ad99a" isOneWay="false" action="" name="findAllItems" bindingOperationName="findAllItems" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="92f2448b-7908-48cd-abdd-5d29da2b71ce" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/AppStoreWeb/storeManagerWebService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ivan="http://www.ivankoi.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ivan:findAllItems>\r
+         <customerId>?</customerId>\r
+      </ivan:findAllItems>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.ivankoi.com/StoreManagerWebEndpoint/findAllItemsRequest"/></con:call></con:operation><con:operation id="377751cc-f6b0-47a2-b5dd-ae1446836c9c" isOneWay="false" action="" name="findCustomerById" bindingOperationName="findCustomerById" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="49759a10-63a5-4f63-9dbb-9784f489d6a6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/AppStoreWeb/storeManagerWebService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ivan="http://www.ivankoi.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ivan:findCustomerById>\r
+         <customerId>?</customerId>\r
+      </ivan:findCustomerById>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.ivankoi.com/StoreManagerWebEndpoint/findCustomerByIdRequest"/></con:call></con:operation><con:operation id="8343718d-79bb-4a28-8546-f6a1b9741c05" isOneWay="false" action="" name="findCustomerByName" bindingOperationName="findCustomerByName" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d3f6417f-c3fb-4979-b20a-b1dd97fb5e61" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/AppStoreWeb/storeManagerWebService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ivan="http://www.ivankoi.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ivan:findCustomerByName>\r
+         <!--Optional:-->\r
+         <customerName>?</customerName>\r
+      </ivan:findCustomerByName>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.ivankoi.com/StoreManagerWebEndpoint/findCustomerByNameRequest"/></con:call></con:operation><con:operation id="04d3d032-ee27-49c4-aeed-07ee99fea05f" isOneWay="false" action="" name="saveOrder" bindingOperationName="saveOrder" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5f240d0c-c7c3-453e-a7ba-8c33d22161f2" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/AppStoreWeb/storeManagerWebService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ivan="http://www.ivankoi.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ivan:saveOrder>\r
+         <customerId>?</customerId>\r
+         <price>?</price>\r
+         <quantity>?</quantity>\r
+         <!--Optional:-->\r
+         <product>?</product>\r
+      </ivan:saveOrder>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.ivankoi.com/StoreManagerWebEndpoint/saveOrderRequest"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" id="905bde7b-ebd1-4168-b7e8-94bae13c42ba" wsaVersion="NONE" name="StoreManagerEJBTopDownSeviceEnpointBinding" type="wsdl" bindingName="{http://www.packtpub.com/}StoreManagerEJBTopDownSeviceEnpointBinding" soapVersion="1_1" anonymous="optional" definition="http://alterivankoi-pc:8080/AppStore/StoreManagerEJBTopDown/StoreManagerEJBTopDownSeviceEnpoint?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://alterivankoi-pc:8080/AppStore/StoreManagerEJBTopDown/StoreManagerEJBTopDownSeviceEnpoint?wsdl"><con:part><con:url>http://alterivankoi-pc:8080/AppStore/StoreManagerEJBTopDown/StoreManagerEJBTopDownSeviceEnpoint?wsdl</con:url><con:content><![CDATA[<definitions name="StoreManagerEJBTopDown" targetNamespace="http://www.packtpub.com/" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:WL5G3N0="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:WL5G3N1="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://www.ivankoi.com" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.packtpub.com/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <types>
+    <xs:schema targetNamespace="http://www.ivankoi.com" version="1.0" xmlns:tns="http://www.ivankoi.com" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="createCustomer" nillable="true" type="tns:createCustomer"/>
+      <xs:element name="createCustomerResponse" nillable="true" type="tns:createCustomerResponse"/>
+      <xs:element name="findAllCustomers" nillable="true" type="tns:findAllCustomers"/>
+      <xs:element name="findAllCustomersResponse" nillable="true" type="tns:findAllCustomersResponse"/>
+      <xs:element name="findAllItems" nillable="true" type="tns:findAllItems"/>
+      <xs:element name="findAllItemsResponse" nillable="true" type="tns:findAllItemsResponse"/>
+      <xs:element name="findCustomerById" nillable="true" type="tns:findCustomerById"/>
+      <xs:element name="findCustomerByIdResponse" nillable="true" type="tns:findCustomerByIdResponse"/>
+      <xs:element name="findCustomerByName" nillable="true" type="tns:findCustomerByName"/>
+      <xs:element name="findCustomerByNameResponse" nillable="true" type="tns:findCustomerByNameResponse"/>
+      <xs:element name="saveOrder" nillable="true" type="tns:saveOrder"/>
+      <xs:element name="saveOrderResponse" nillable="true" type="tns:saveOrderResponse"/>
+      <xs:complexType name="createCustomer">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="customerCountry" type="xs:string"/>
+          <xs:element minOccurs="0" name="customerName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="createCustomerResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="saveOrder">
+        <xs:sequence>
+          <xs:element name="customerId" type="xs:int"/>
+          <xs:element name="price" type="xs:int"/>
+          <xs:element name="quantity" type="xs:int"/>
+          <xs:element minOccurs="0" name="product" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="saveOrderResponse">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="findCustomerById">
+        <xs:sequence>
+          <xs:element name="customerId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findCustomerByIdResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="customer" type="tns:customer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="customer">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element minOccurs="0" name="country" type="xs:string"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="items" nillable="true" type="tns:item"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="item">
+        <xs:sequence>
+          <xs:element name="id" type="xs:int"/>
+          <xs:element name="price" type="xs:int"/>
+          <xs:element minOccurs="0" name="product" type="xs:string"/>
+          <xs:element name="quantity" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findAllItems">
+        <xs:sequence>
+          <xs:element name="customerId" type="xs:int"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findAllItemsResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="itemList" nillable="true" type="tns:item"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findCustomerByName">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="customerName" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findCustomerByNameResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="customer" type="tns:customer"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findAllCustomers">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="findAllCustomersResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="customerList" nillable="true" type="tns:customer"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </types>
+  <message name="StoreManagerEJBTopDownSeviceEnpoint_findAllItemsResponse">
+    <part element="ns1:findAllItemsResponse" name="findAllItemsResponse"/>
+  </message>
+  <message name="StoreManagerEJBTopDownSeviceEnpoint_findCustomerByIdResponse">
+    <part element="ns1:findCustomerByIdResponse" name="findCustomerByIdResponse"/>
+  </message>
+  <message name="StoreManagerEJBTopDownSeviceEnpoint_findAllCustomers">
+    <part element="ns1:findAllCustomers" name="findAllCustomers"/>
+  </message>
+  <message name="StoreManagerEJBTopDownSeviceEnpoint_findCustomerByNameResponse">
+    <part element="ns1:findCustomerByNameResponse" name="findCustomerByNameResponse"/>
+  </message>
+  <message name="StoreManagerEJBTopDownSeviceEnpoint_findAllItems">
+    <part element="ns1:findAllItems" name="findAllItems"/>
+  </message>
+  <message name="StoreManagerEJBTopDownSeviceEnpoint_findAllCustomersResponse">
+    <part element="ns1:findAllCustomersResponse" name="findAllCustomersResponse"/>
+  </message>
+  <message name="StoreManagerEJBTopDownSeviceEnpoint_saveOrder">
+    <part element="ns1:saveOrder" name="saveOrder"/>
+  </message>
+  <message name="StoreManagerEJBTopDownSeviceEnpoint_createCustomerResponse">
+    <part element="ns1:createCustomerResponse" name="createCustomerResponse"/>
+  </message>
+  <message name="StoreManagerEJBTopDownSeviceEnpoint_findCustomerById">
+    <part element="ns1:findCustomerById" name="findCustomerById"/>
+  </message>
+  <message name="StoreManagerEJBTopDownSeviceEnpoint_saveOrderResponse">
+    <part element="ns1:saveOrderResponse" name="saveOrderResponse"/>
+  </message>
+  <message name="StoreManagerEJBTopDownSeviceEnpoint_createCustomer">
+    <part element="ns1:createCustomer" name="createCustomer"/>
+  </message>
+  <message name="StoreManagerEJBTopDownSeviceEnpoint_findCustomerByName">
+    <part element="ns1:findCustomerByName" name="findCustomerByName"/>
+  </message>
+  <portType name="StoreManagerEJBTopDownSeviceEnpoint">
+    <operation name="createCustomer" parameterOrder="createCustomer">
+      <input message="tns:StoreManagerEJBTopDownSeviceEnpoint_createCustomer"/>
+      <output message="tns:StoreManagerEJBTopDownSeviceEnpoint_createCustomerResponse"/>
+    </operation>
+    <operation name="findAllCustomers" parameterOrder="findAllCustomers">
+      <input message="tns:StoreManagerEJBTopDownSeviceEnpoint_findAllCustomers"/>
+      <output message="tns:StoreManagerEJBTopDownSeviceEnpoint_findAllCustomersResponse"/>
+    </operation>
+    <operation name="findAllItems" parameterOrder="findAllItems">
+      <input message="tns:StoreManagerEJBTopDownSeviceEnpoint_findAllItems"/>
+      <output message="tns:StoreManagerEJBTopDownSeviceEnpoint_findAllItemsResponse"/>
+    </operation>
+    <operation name="findCustomerById" parameterOrder="findCustomerById">
+      <input message="tns:StoreManagerEJBTopDownSeviceEnpoint_findCustomerById"/>
+      <output message="tns:StoreManagerEJBTopDownSeviceEnpoint_findCustomerByIdResponse"/>
+    </operation>
+    <operation name="findCustomerByName" parameterOrder="findCustomerByName">
+      <input message="tns:StoreManagerEJBTopDownSeviceEnpoint_findCustomerByName"/>
+      <output message="tns:StoreManagerEJBTopDownSeviceEnpoint_findCustomerByNameResponse"/>
+    </operation>
+    <operation name="saveOrder" parameterOrder="saveOrder">
+      <input message="tns:StoreManagerEJBTopDownSeviceEnpoint_saveOrder"/>
+      <output message="tns:StoreManagerEJBTopDownSeviceEnpoint_saveOrderResponse"/>
+    </operation>
+  </portType>
+  <binding name="StoreManagerEJBTopDownSeviceEnpointBinding" type="tns:StoreManagerEJBTopDownSeviceEnpoint">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="createCustomer">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="findAllCustomers">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="findAllItems">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="findCustomerById">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="findCustomerByName">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="saveOrder">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="StoreManagerEJBTopDown">
+    <port binding="tns:StoreManagerEJBTopDownSeviceEnpointBinding" name="StoreManagerEJBTopDownSeviceEnpointPort">
+      <soap:address location="http://alterivankoi-pc:8080/AppStore/StoreManagerEJBTopDown/StoreManagerEJBTopDownSeviceEnpoint"/>
+    </port>
+  </service>
+  <wsp:UsingPolicy WL5G3N1:Required="true"/>
+  <wsp:Policy WL5G3N0:Id="digestUsernameToken2004.xml">
+    <sp:Strict wsp:Optional="true" xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy"/>
+    <wssp:Identity xmlns:wssp="http://www.bea.com/wls90/security/policy">
+      <wssp:SupportedTokens>
+        <wssp:SecurityToken TokenType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#UsernameToken">
+          <wssp:Claims>
+            <wssp:UsePassword Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest"/>
+          </wssp:Claims>
+        </wssp:SecurityToken>
+      </wssp:SupportedTokens>
+    </wssp:Identity>
+  </wsp:Policy>
+</definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://alterivankoi-pc:8080/AppStore/StoreManagerEJBTopDown/StoreManagerEJBTopDownSeviceEnpoint</con:endpoint></con:endpoints><con:operation id="631afd83-f7ee-4735-bf16-fcc96caef070" isOneWay="false" action="" name="createCustomer" bindingOperationName="createCustomer" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="7dcf384e-063a-4405-96d7-76781d4200b0" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://alterivankoi-pc:8080/AppStore/StoreManagerEJBTopDown/StoreManagerEJBTopDownSeviceEnpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ivan="http://www.ivankoi.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ivan:createCustomer>\r
+         <!--Optional:-->\r
+         <customerCountry>?</customerCountry>\r
+         <!--Optional:-->\r
+         <customerName>?</customerName>\r
+      </ivan:createCustomer>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.packtpub.com/StoreManagerEJBTopDownSeviceEnpoint/createCustomerRequest"/></con:call></con:operation><con:operation id="dec7e606-1914-4a93-af96-2685814bd20a" isOneWay="false" action="" name="findAllCustomers" bindingOperationName="findAllCustomers" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="78e5e1a1-e890-455b-82fc-af59187fd995" name="Request 1" wssPasswordType="PasswordDigest"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://alterivankoi-pc:8080/AppStore/StoreManagerEJBTopDown/StoreManagerEJBTopDownSeviceEnpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ivan="http://www.ivankoi.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ivan:findAllCustomers/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:username>admin</con:username><con:password>password</con:password><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.packtpub.com/StoreManagerEJBTopDownSeviceEnpoint/findAllCustomersRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="5648c217-7a02-4990-8d01-5c2a9c8d7f0e" isOneWay="false" action="" name="findAllItems" bindingOperationName="findAllItems" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ead1ab3f-f357-486b-b4e4-a719cd7b0153" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://alterivankoi-pc:8080/AppStore/StoreManagerEJBTopDown/StoreManagerEJBTopDownSeviceEnpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ivan="http://www.ivankoi.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ivan:findAllItems>\r
+         <customerId>?</customerId>\r
+      </ivan:findAllItems>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.packtpub.com/StoreManagerEJBTopDownSeviceEnpoint/findAllItemsRequest"/></con:call></con:operation><con:operation id="945bc795-26e9-4829-ac9c-a4987e123531" isOneWay="false" action="" name="findCustomerById" bindingOperationName="findCustomerById" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d9ff68e6-8e56-44f5-bf8e-4e540fe7f406" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://alterivankoi-pc:8080/AppStore/StoreManagerEJBTopDown/StoreManagerEJBTopDownSeviceEnpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ivan="http://www.ivankoi.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ivan:findCustomerById>\r
+         <customerId>?</customerId>\r
+      </ivan:findCustomerById>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.packtpub.com/StoreManagerEJBTopDownSeviceEnpoint/findCustomerByIdRequest"/></con:call></con:operation><con:operation id="50371e35-2bb6-4376-b327-7a3fb93abd39" isOneWay="false" action="" name="findCustomerByName" bindingOperationName="findCustomerByName" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="71ed5c2b-67c0-4c61-908c-d61cbb033e96" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://alterivankoi-pc:8080/AppStore/StoreManagerEJBTopDown/StoreManagerEJBTopDownSeviceEnpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ivan="http://www.ivankoi.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ivan:findCustomerByName>\r
+         <!--Optional:-->\r
+         <customerName>?</customerName>\r
+      </ivan:findCustomerByName>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.packtpub.com/StoreManagerEJBTopDownSeviceEnpoint/findCustomerByNameRequest"/></con:call></con:operation><con:operation id="eed6486e-8ce6-4417-8e2a-7f68cb3867d1" isOneWay="false" action="" name="saveOrder" bindingOperationName="saveOrder" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="09292916-18ca-4afb-b6b0-7511ccecd369" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://alterivankoi-pc:8080/AppStore/StoreManagerEJBTopDown/StoreManagerEJBTopDownSeviceEnpoint</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ivan="http://www.ivankoi.com">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <ivan:saveOrder>\r
+         <customerId>?</customerId>\r
+         <price>?</price>\r
+         <quantity>?</quantity>\r
+         <!--Optional:-->\r
+         <product>?</product>\r
+      </ivan:saveOrder>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.packtpub.com/StoreManagerEJBTopDownSeviceEnpoint/saveOrderRequest"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

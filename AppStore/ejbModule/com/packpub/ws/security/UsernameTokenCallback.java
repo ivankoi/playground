@@ -13,6 +13,7 @@ import org.jboss.security.Base64Encoder;
 import org.jboss.security.auth.callback.MapCallback;
 import org.jboss.ws.WSException;
 import org.jboss.ws.extensions.security.auth.callback.UsernameTokenCallbackHandler;
+import org.jboss.util.Base64;
 
 public class UsernameTokenCallback implements DigestCallback {
 	public static final String NONCE = "nonce";
@@ -31,19 +32,20 @@ public class UsernameTokenCallback implements DigestCallback {
 
 	   public void preDigest(MessageDigest digest)
 	   {
-//	      try
-//	      {
-//	         String nonce = (String)info.getInfo(NONCE);
-//	         if (nonce != null)
+	      try
+	      {
+	         String nonce = (String)info.getInfo(NONCE);
+	         if (nonce != null)
 //	            digest.update(nonce.getBytes("UTF-8"));
-//	         String created = (String)info.getInfo(CREATED);
-//	         if (created != null)
-//	            digest.update(created.getBytes("UTF-8"));
-//	      }
-//	      catch (UnsupportedEncodingException e)
-//	      {
-//	         throw new WSException(e);
-//	      }
+	         	digest.update(Base64.decode(nonce)); // TODO add Base64 encoding type attribute
+	         String created = (String)info.getInfo(CREATED);
+	         if (created != null)
+	            digest.update(created.getBytes("UTF-8"));
+	      }
+	      catch (UnsupportedEncodingException e)
+	      {
+	         throw new WSException(e);
+	      }
 	   }
 
 	   public void postDigest(MessageDigest digest)
@@ -53,17 +55,18 @@ public class UsernameTokenCallback implements DigestCallback {
 	   @SuppressWarnings("unchecked")
 	   public static void main(String[] args) throws Exception
 	   {
-	      if (args.length != 3)
-	      {
-	         System.err.println("Usage: UsernameTokenCallback nonce created password");
-	         System.err.println(" - nonce : the nonce");
-	         System.err.println(" - created : the creation timestamp");
-	         System.err.println(" - password : the plain text password");
-	         System.exit(1);
-	      }
-	      String nonce = args[0];
-	      String created = args[1];
-	      String password = args[2];
+//	      if (args.length != 3)
+//	      {
+//	         System.err.println("Usage: UsernameTokenCallback nonce created password");
+//	         System.err.println(" - nonce : the nonce");
+//	         System.err.println(" - created : the creation timestamp");
+//	         System.err.println(" - password : the plain text password");
+//	         System.exit(1);
+//	      }
+	      String nonce = "iGYGXYTo9ItIdb+5Zx4Wpw==";
+//	      String created = "2015-03-30T20:19:13.640Z";
+	      String created = null;
+	      String password = "password";
 	      
 	      MessageDigest digest = MessageDigest.getInstance("SHA");
 	      UsernameTokenCallback utc = new UsernameTokenCallback();

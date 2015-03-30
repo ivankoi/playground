@@ -16,7 +16,7 @@ import javax.xml.ws.ResponseWrapper;
  * Generated source version: 2.0
  * 
  */
-@WebService(name = "StoreManagerWebEndpoint", targetNamespace = "http://www.ivankoi.com")
+@WebService(name = "StoreManagerWebEndpoint", targetNamespace = "http://www.ivankoi.com", wsdlLocation="/wsdl")
 public interface StoreManagerWebEndpoint {
 
 

@@ -21,13 +21,14 @@ import org.apache.commons.logging.LogFactory;
 import org.jboss.ejb3.annotation.RemoteBinding;
 import org.jboss.ejb3.annotation.SecurityDomain;
 import org.jboss.ws.annotation.EndpointConfig;
+import org.jboss.ws.extensions.policy.annotation.Policy;
 
 import com.ivankoi.Customer;
 import com.ivankoi.Item;
 import com.packtpub.ejb.example3.StoreManager;
 
 @Stateless
-@WebService(targetNamespace = "http://www.packtpub.com/", serviceName = "StoreManagerEJBTopDown")
+@WebService(targetNamespace = "http://www.packtpub.com/", serviceName = "StoreManagerEJBTopDown", wsdlLocation="META-INF/wsdl/StoreManagerEJBTopDownSeviceEnpoint.wsdl")
 @EndpointConfig(configName = "Standard WSSecurity Endpoint")
 //@SecurityDomain("JBossWS")
 @SecurityDomain("JBossWSDigest")

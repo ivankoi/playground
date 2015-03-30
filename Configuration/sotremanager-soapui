@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ivan="http://www.ivankoi.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ivan:findAllItems>
+         <customerId>1</customerId>
+      </ivan:findAllItems>
+   </soapenv:Body>
+</soapenv:Envelope>

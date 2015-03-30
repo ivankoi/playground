@@ -1,9 +1,13 @@
 package com.packpub.ws;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Resource;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
+import javax.ejb.SessionContext;
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -15,20 +19,29 @@ import javax.xml.ws.ResponseWrapper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jboss.ejb3.annotation.RemoteBinding;
+import org.jboss.ejb3.annotation.SecurityDomain;
+import org.jboss.ws.annotation.EndpointConfig;
 
 import com.ivankoi.Customer;
 import com.ivankoi.Item;
 import com.packtpub.ejb.example3.StoreManager;
 
 @Stateless
-@RemoteBinding(jndiBinding="StoreManagerEJB/remote")
 @WebService(targetNamespace = "http://www.packtpub.com/", serviceName = "StoreManagerEJBTopDown")
+@EndpointConfig(configName = "Standard WSSecurity Endpoint")
+//@SecurityDomain("JBossWS")
+@SecurityDomain("JBossWSDigest")
+@RemoteBinding(jndiBinding="StoreManagerEJB/remote")
+@RolesAllowed("JBossAdmin")
 public class StoreManagerEJBTopDownSeviceEnpoint implements StoreManagerTopDown {
 	
 	static Log LOG = LogFactory.getLog(StoreManagerEJBTopDownSeviceEnpoint.class);
 	
 	@EJB(mappedName = "AppStoreEJB/local")  
 	private StoreManager storeManager;
+	
+	@Resource
+    private SessionContext sessionContext;
 	
 	/**
      * 
@@ -61,6 +74,10 @@ public class StoreManagerEJBTopDownSeviceEnpoint implements StoreManagerTopDown 
 		LOG.warn("findAllCustomers() warn");
 		LOG.error("findAllCustomers() error");
 		
+		Principal principal = sessionContext.getCallerPrincipal();
+		LOG.info("Principal: " + principal.getName());
+		LOG.info("HAS JBossAdmin Role: " + sessionContext.isCallerInRole("JBossAdmin"));
+	    
 		List<Customer> result = new ArrayList<Customer>();
 		
 		List<com.packtpub.jpa.example3.Customer> customersEntities = storeManager.findAllCustomers();

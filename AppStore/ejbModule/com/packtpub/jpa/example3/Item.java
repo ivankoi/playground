@@ -3,11 +3,24 @@ package com.packtpub.jpa.example3;
  
 
 import java.io.Serializable;
-import javax.persistence.*;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name="ITEM")
 @SequenceGenerator(name = "itemSeq", sequenceName = "item_seq")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Item implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -25,7 +38,7 @@ public class Item implements Serializable {
 	@Column(name="QUANTITY")
 	private int quantity;
 
-	//bi-directional many-to-one association to Customer
+	@XmlTransient
 	@ManyToOne  
 	@JoinColumn(name="CUSTOMER_ID")  
 	private Customer customerFK;

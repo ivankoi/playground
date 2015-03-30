@@ -3,6 +3,9 @@ package com.packtpub.jpa.example3;
 import java.io.Serializable;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlTransient;
 
 import java.util.List;
 
@@ -11,6 +14,7 @@ import static javax.persistence.FetchType.EAGER;
 @Entity  
 @Table(name="CUSTOMER")  
 @SequenceGenerator(name = "customerSeq", sequenceName = "customer_seq")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Customer implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -25,7 +29,6 @@ public class Customer implements Serializable {
 	@Column(name="NAME")
 	private String name;
 
-	//bi-directional many-to-one association to Item
 	@OneToMany(mappedBy="customerFK", fetch = EAGER)  
 	private List<Item> items;
 

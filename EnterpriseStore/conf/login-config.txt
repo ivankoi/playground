@@ -109,16 +109,14 @@ $Revision: 87078 $
 
 	<application-policy name="JBossWSDigest">
 	  <authentication>
-		<!--login-module code="org.jboss.security.auth.spi.UsersRolesLoginModule" flag="required"-->
-		<login-module code="com.packpub.ws.security.CustomLoginModule" flag="required">
+		<login-module code="org.jboss.security.auth.spi.UsersRolesLoginModule" flag="required">
 		  <module-option name="usersProperties">props/jbossws-users.properties</module-option>
 		  <module-option name="rolesProperties">props/jbossws-roles.properties</module-option>
 		  <module-option name="hashAlgorithm">SHA</module-option>
 		  <module-option name="hashEncoding">BASE64</module-option>
 		  <module-option name="hashUserPassword">false</module-option>
 		  <module-option name="hashStorePassword">true</module-option>
-		  <!--module-option name="storeDigestCallback">org.jboss.ws.extensions.security.auth.callback.UsernameTokenCallback</module-option -->
-		  <module-option name="storeDigestCallback">com.packpub.ws.security.UsernameTokenCallback</module-option>
+		  <module-option name="storeDigestCallback">org.jboss.ws.extensions.security.auth.callback.UsernameTokenCallback</module-option>
 		  <module-option name="unauthenticatedIdentity">anonymous</module-option>
 		</login-module>
 	  </authentication>

@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions name="Calculator_pojo_ws_rpc_secured"
+	targetNamespace="http://www.ivankoi.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.ivankoi.com/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy">
+	<wsp:UsingPolicy wsdl:Required="true" />
+	<wsp:Policy wsdl:Id="digestUsernameToken2004.xml">
+		<sp:Strict wsp:Optional="true"
+			xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy" />
+		<wssp:Identity xmlns:wssp="http://www.bea.com/wls90/security/policy">
+			<wssp:SupportedTokens>
+				<wssp:SecurityToken
+					TokenType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#UsernameToken">
+					<wssp:Claims>
+						<wssp:UsePassword
+							Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest" />
+					</wssp:Claims>
+				</wssp:SecurityToken>
+			</wssp:SupportedTokens>
+		</wssp:Identity>
+	</wsp:Policy>
+	<wsdl:message name="calculatePowerResponse">
+		<wsdl:part name="result" type="xsd:double">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:message name="calculatePower">
+		<wsdl:part name="base" type="xsd:double">
+		</wsdl:part>
+		<wsdl:part name="exponent" type="xsd:double">
+		</wsdl:part>
+	</wsdl:message>
+	<wsdl:portType name="CalculatorPojoWsRpcSecured">
+		<wsdl:operation name="calculatePower">
+			<wsdl:input message="tns:calculatePower" name="calculatePower">
+			</wsdl:input>
+			<wsdl:output message="tns:calculatePowerResponse" name="calculatePowerResponse">
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="Calculator_pojo_ws_rpc_securedSoapBinding"
+		type="tns:CalculatorPojoWsRpcSecured">
+		<soap:binding style="rpc"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="calculatePower">
+			<soap:operation soapAction="" style="rpc" />
+			<wsdl:input name="calculatePower">
+				<soap:body namespace="http://www.ivankoi.com/" use="literal" />
+			</wsdl:input>
+			<wsdl:output name="calculatePowerResponse">
+				<soap:body namespace="http://www.ivankoi.com/" use="literal" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="Calculator_pojo_ws_rpc_secured">
+		<wsdl:port binding="tns:Calculator_pojo_ws_rpc_securedSoapBinding"
+			name="CalculatorPojoWsRpcSecuredPort">
+			<soap:address
+				location="http://localhost:8080/as7.ws/CalculatorPojoWsRpcSecured" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

@@ -27,7 +27,16 @@
 			com.ivankoi.jee6.business.calculator.boundary.CalculatorPojoWsDocSecured
 		</servlet-class>
 	</servlet>
-   
+  
+  <servlet>
+    <servlet-name>Endpoint</servlet-name>
+    <servlet-class>org.jboss.test.ws.jaxws.samples.provider.ProviderBeanPayload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Endpoint</servlet-name>
+    <url-pattern>/Endpoint</url-pattern>
+  </servlet-mapping>
+  
 	<servlet-mapping>
 		<servlet-name>CalculatorPojoWsRpc</servlet-name>
 		<url-pattern>/CalculatorPojoWsRpc</url-pattern>

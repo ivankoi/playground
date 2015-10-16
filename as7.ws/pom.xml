@@ -146,6 +146,12 @@
 		<version>1.6.5</version>
 	</dependency>
      	
+	<dependency>
+	    <groupId>ec-ws</groupId>
+	    <artifactId>services-jaxws-client</artifactId>
+	    <version>9.2.0</version>
+	</dependency>
+	
       <!-- Now we declare any tools needed -->
 
       <!-- Annotation processor to generate the JPA 2.0 metamodel classes 

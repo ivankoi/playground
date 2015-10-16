@@ -11,8 +11,9 @@
          on JBoss AS 7.</p>
 
       <h:form id="Testservice">
-      	 <h:commandLink action="#{wsConsumer.testSemiDynamicService()}" value="Test Semi Dynamic Service" />
-      	 <h:commandLink action="#{wsConsumer.testStaticService()}" value="Test Static Service" />
+      	 <h:commandLink action="#{wsConsumer.testSemiDynamicService()}" value="Test Semi Dynamic Service" /><br/>
+      	 <h:commandLink action="#{wsConsumer.testStaticService()}" value="Test Static Service" /><br/>
+      	 <h:commandLink action="#{cpmConsumer.cpmSecuredInvoker()}" value="CpmConsumer Test Static Service" />
       </h:form>
       <h:form id="reg">
          <h2>Register (Bean Validation example)</h2>

@@ -12,10 +12,11 @@ import javax.xml.ws.Service;
 
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.apache.cxf.ws.security.SecurityConstants;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.ivankoi.jee6.business.calculator.boundary.HeaderHandlerResolver;
-
+@Ignore
 public class CalculatorPojoWsDocSecured_ServiceTest {
 
 //	private static final QName SERVICE_NAME = new QName("http://www.ivankoi.com/", "Calculator_pojo_ws_doc");

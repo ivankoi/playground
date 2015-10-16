@@ -18,7 +18,7 @@ public class WsConsumer {
 	
 	
 	public void testSemiDynamicService() throws MalformedURLException {
-		URL wsdlURL = new URL("http://localhost:8090/as7.ws/CalculatorPojoWsDocSecured?wsdl");
+		URL wsdlURL = new URL("http://localhost:8889/as7.ws/CalculatorPojoWsDocSecured?wsdl");
         QName qname = new QName("http://www.ivankoi.com/", "Calculator_pojo_ws_doc_secured");
         
         Service service = Service.create(wsdlURL, qname);
@@ -28,7 +28,7 @@ public class WsConsumer {
         CalculatorPojoWsDocSecured port = (CalculatorPojoWsDocSecured) service.getPort(CalculatorPojoWsDocSecured.class);
  
         Map<String, Object> ctx = ((BindingProvider)port).getRequestContext();
-        ctx.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:8090/as7.ws/CalculatorPojoWsDocSecured");
+        ctx.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:8889/as7.ws/CalculatorPojoWsDocSecured");
  
         double actual = port.calculatePower(2, 4);
         System.out.println("***********************************************");
@@ -44,7 +44,7 @@ public class WsConsumer {
 		CalculatorPojoWsDocSecured port = (CalculatorPojoWsDocSecured) service.getPort(CalculatorPojoWsDocSecured.class);
 		 
         Map<String, Object> ctx = ((BindingProvider)port).getRequestContext();
-        ctx.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:8090/as7.ws/CalculatorPojoWsDocSecured");
+        ctx.put(BindingProvider.ENDPOINT_ADDRESS_PROPERTY, "http://localhost:8889/as7.ws/CalculatorPojoWsDocSecured");
  
         double actual = port.calculatePower(2, 4);
         System.out.println("***********************************************");
